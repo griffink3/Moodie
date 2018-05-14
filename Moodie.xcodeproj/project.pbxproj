@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		855064E020A37BBE0039E9AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855064DF20A37BBE0039E9AD /* AppDelegate.swift */; };
-		855064E220A37BBE0039E9AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855064E120A37BBE0039E9AD /* ViewController.swift */; };
+		855064E220A37BBE0039E9AD /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855064E120A37BBE0039E9AD /* ViewController1.swift */; };
 		855064E520A37BBE0039E9AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 855064E320A37BBE0039E9AD /* Main.storyboard */; };
 		855064E720A37BC00039E9AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 855064E620A37BC00039E9AD /* Assets.xcassets */; };
 		855064EA20A37BC00039E9AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 855064E820A37BC00039E9AD /* LaunchScreen.storyboard */; };
 		855064F520A37BC00039E9AD /* MoodieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855064F420A37BC00039E9AD /* MoodieTests.swift */; };
+		8550650020A8CD390039E9AD /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855064FF20A8CD390039E9AD /* ViewController2.swift */; };
+		8550650220A8D7F50039E9AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650120A8D7F50039E9AD /* User.swift */; };
+		8550650620A8E1640039E9AD /* VC1Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650520A8E1640039E9AD /* VC1Test.swift */; };
+		8550650A20A8F2F10039E9AD /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650920A8F2F10039E9AD /* ViewController3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,7 @@
 /* Begin PBXFileReference section */
 		855064DC20A37BBE0039E9AD /* Moodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		855064DF20A37BBE0039E9AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		855064E120A37BBE0039E9AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		855064E120A37BBE0039E9AD /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		855064E420A37BBE0039E9AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		855064E620A37BC00039E9AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		855064E920A37BC00039E9AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +40,10 @@
 		855064F020A37BC00039E9AD /* MoodieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		855064F420A37BC00039E9AD /* MoodieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodieTests.swift; sourceTree = "<group>"; };
 		855064F620A37BC00039E9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		855064FF20A8CD390039E9AD /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		8550650120A8D7F50039E9AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8550650520A8E1640039E9AD /* VC1Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC1Test.swift; sourceTree = "<group>"; };
+		8550650920A8F2F10039E9AD /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +86,14 @@
 			isa = PBXGroup;
 			children = (
 				855064DF20A37BBE0039E9AD /* AppDelegate.swift */,
-				855064E120A37BBE0039E9AD /* ViewController.swift */,
+				855064E120A37BBE0039E9AD /* ViewController1.swift */,
 				855064E320A37BBE0039E9AD /* Main.storyboard */,
 				855064E620A37BC00039E9AD /* Assets.xcassets */,
 				855064E820A37BC00039E9AD /* LaunchScreen.storyboard */,
 				855064EB20A37BC00039E9AD /* Info.plist */,
+				855064FF20A8CD390039E9AD /* ViewController2.swift */,
+				8550650120A8D7F50039E9AD /* User.swift */,
+				8550650920A8F2F10039E9AD /* ViewController3.swift */,
 			);
 			path = Moodie;
 			sourceTree = "<group>";
@@ -92,6 +103,7 @@
 			children = (
 				855064F420A37BC00039E9AD /* MoodieTests.swift */,
 				855064F620A37BC00039E9AD /* Info.plist */,
+				8550650520A8E1640039E9AD /* VC1Test.swift */,
 			);
 			path = MoodieTests;
 			sourceTree = "<group>";
@@ -197,8 +209,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				855064E220A37BBE0039E9AD /* ViewController.swift in Sources */,
+				8550650A20A8F2F10039E9AD /* ViewController3.swift in Sources */,
+				8550650220A8D7F50039E9AD /* User.swift in Sources */,
+				855064E220A37BBE0039E9AD /* ViewController1.swift in Sources */,
 				855064E020A37BBE0039E9AD /* AppDelegate.swift in Sources */,
+				8550650020A8CD390039E9AD /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8550650620A8E1640039E9AD /* VC1Test.swift in Sources */,
 				855064F520A37BC00039E9AD /* MoodieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

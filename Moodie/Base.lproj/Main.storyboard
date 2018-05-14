@@ -13,7 +13,7 @@
         <!--StartPage-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="StartPage" id="BYZ-38-t0r" customClass="ViewController" customModule="Moodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StartPage" id="BYZ-38-t0r" customClass="ViewController1" customModule="Moodie" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +74,7 @@
         <!--NewProfile-->
         <scene sceneID="DUW-Fg-kZv">
             <objects>
-                <viewController title="NewProfile" id="yCI-l1-xBo" sceneMemberID="viewController">
+                <viewController title="NewProfile" id="yCI-l1-xBo" customClass="ViewController2" customModule="Moodie" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mzw-O9-ThE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +98,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="continue_button"/>
                                 <connections>
-                                    <segue destination="zMj-2G-5KM" kind="show" id="ctx-GU-GIP"/>
+                                    <action selector="createNewUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="XS2-ZI-fJY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-SV-hEg">
@@ -122,28 +122,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT0-bf-Zgg">
-                                <rect key="frame" x="27" y="242" width="114" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Password:">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="Futura-CondensedExtraBold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7L8-Hi-Hzu">
                                 <rect key="frame" x="151" y="173" width="197" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y5s-3g-H1v">
-                                <rect key="frame" x="151" y="246" width="197" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -153,6 +133,12 @@
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="IUz-mP-xSI"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="kUo-SV-hEg" id="Qxt-rc-aqb"/>
+                        <outlet property="continueButton" destination="ot0-5P-zE0" id="SuJ-ff-uoF"/>
+                        <outlet property="createNewUser" destination="ot0-5P-zE0" id="ybo-kf-BGu"/>
+                        <outlet property="newNameField" destination="7L8-Hi-Hzu" id="5oe-Gq-qCa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ez9-dx-tPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,7 +147,7 @@
         <!--ExistingProfile-->
         <scene sceneID="SBc-6o-neC">
             <objects>
-                <viewController title="ExistingProfile" id="Nph-7w-Z7o" sceneMemberID="viewController">
+                <viewController title="ExistingProfile" id="Nph-7w-Z7o" customClass="ViewController3" customModule="Moodie" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MiI-VA-XdH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,14 +182,24 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="D6H-on-MFv"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JFZ-Bm-1XD">
+                                <rect key="frame" x="27" y="115" width="321" height="426"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uss-bp-Xzy"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="Yaj-xv-BsH" id="jkd-pD-g4r"/>
+                        <outlet property="continueButton" destination="zPa-JY-oeo" id="cNo-Ob-be2"/>
+                        <outlet property="userTable" destination="JFZ-Bm-1XD" id="DHU-gF-Gm9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dO2-qF-SNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884" y="474"/>
+            <point key="canvasLocation" x="884" y="473.6131934032984"/>
         </scene>
         <!--UserPage-->
         <scene sceneID="21E-M5-mVg">
@@ -303,7 +299,6 @@
         <image name="track_button" width="264" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ctx-GU-GIP"/>
-        <segue reference="zpf-j7-7bJ"/>
+        <segue reference="k1T-Al-WZE"/>
     </inferredMetricsTieBreakers>
 </document>
