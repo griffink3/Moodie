@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController3: UIViewController {
+class ViewController3: UIViewController, UITableViewDataSource {
     
     // MARK: Properties
     @IBOutlet weak var userTable: UITableView!
@@ -22,7 +22,7 @@ class ViewController3: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         userTable.register(UITableViewCell.self, forCellReuseIdentifier: "user")
-        getUsers()
+        userTable.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,16 +32,21 @@ class ViewController3: UIViewController {
     
     func getUsers() {
         for (name, _) in appDelegate.users {
+            print(name)
             userArray.append(name)
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        userArray.removeAll()
+        getUsers()
         return userArray.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell! = userTable.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("BUILDING TABLE")
+        let cell = userTable.dequeueReusableCell(withIdentifier: "user", for: indexPath) 
+        print(userArray[indexPath.row])
         cell.textLabel!.text = userArray[indexPath.row]
         return cell
     }

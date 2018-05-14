@@ -17,6 +17,7 @@
 		8550650220A8D7F50039E9AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650120A8D7F50039E9AD /* User.swift */; };
 		8550650620A8E1640039E9AD /* VC1Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650520A8E1640039E9AD /* VC1Test.swift */; };
 		8550650A20A8F2F10039E9AD /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650920A8F2F10039E9AD /* ViewController3.swift */; };
+		8581E52C20AA14A70012C695 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581E52B20AA14A70012C695 /* ViewController4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		8550650120A8D7F50039E9AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8550650520A8E1640039E9AD /* VC1Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC1Test.swift; sourceTree = "<group>"; };
 		8550650920A8F2F10039E9AD /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		8581E52B20AA14A70012C695 /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				855064FF20A8CD390039E9AD /* ViewController2.swift */,
 				8550650120A8D7F50039E9AD /* User.swift */,
 				8550650920A8F2F10039E9AD /* ViewController3.swift */,
+				8581E52B20AA14A70012C695 /* ViewController4.swift */,
 			);
 			path = Moodie;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8550650A20A8F2F10039E9AD /* ViewController3.swift in Sources */,
+				8581E52C20AA14A70012C695 /* ViewController4.swift in Sources */,
 				8550650220A8D7F50039E9AD /* User.swift in Sources */,
 				855064E220A37BBE0039E9AD /* ViewController1.swift in Sources */,
 				855064E020A37BBE0039E9AD /* AppDelegate.swift in Sources */,

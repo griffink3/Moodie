@@ -93,14 +93,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ot0-5P-zE0">
-                                <rect key="frame" x="174" y="562" width="136" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="continue_button"/>
-                                <connections>
-                                    <action selector="createNewUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="XS2-ZI-fJY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-SV-hEg">
                                 <rect key="frame" x="64" y="562" width="92" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -129,14 +121,37 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ag-cY-1ec">
+                                <rect key="frame" x="175" y="562" width="135" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="continue_button"/>
+                                <connections>
+                                    <action selector="newUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="mIt-LY-g1S"/>
+                                    <segue destination="zMj-2G-5KM" kind="show" identifier="newUser" id="7sk-4q-NSG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFZ-GL-RQ0">
+                                <rect key="frame" x="27" y="453" width="321" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.140704847080527" green="0.46916158443765804" blue="0.80582091968911929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="IUz-mP-xSI"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="kUo-SV-hEg" id="Qxt-rc-aqb"/>
-                        <outlet property="continueButton" destination="ot0-5P-zE0" id="SuJ-ff-uoF"/>
-                        <outlet property="createNewUser" destination="ot0-5P-zE0" id="ybo-kf-BGu"/>
+                        <outlet property="continueButton" destination="6ag-cY-1ec" id="yeA-wl-2J4"/>
+                        <outlet property="errorLabel" destination="HFZ-GL-RQ0" id="AYK-Dy-h1T"/>
                         <outlet property="newNameField" destination="7L8-Hi-Hzu" id="5oe-Gq-qCa"/>
                     </connections>
                 </viewController>
@@ -204,16 +219,16 @@
         <!--UserPage-->
         <scene sceneID="21E-M5-mVg">
             <objects>
-                <viewController title="UserPage" id="zMj-2G-5KM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nQC-Ly-Ljd">
+                <viewController title="UserPage" id="zMj-2G-5KM" customClass="ViewController4" customModule="Moodie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nQC-Ly-Ljd" customClass="Vi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3h-db-9qh">
-                                <rect key="frame" x="130" y="34" width="114" height="86"/>
+                                <rect key="frame" x="41" y="34" width="292" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="&lt;user&gt;">
+                                    <fragment content=" ">
                                         <attributes>
                                             <font key="NSFont" size="33" name="Futura-CondensedExtraBold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -251,7 +266,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ge6-md-1Jx"/>
+                        <connections>
+                            <outlet property="titleLabel" destination="J3h-db-9qh" id="tXk-Kq-4aQ"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="homeButton" destination="gJo-Ox-JeA" id="oom-xa-Byj"/>
+                        <outlet property="newEntryButton" destination="0SM-6M-y0M" id="yc8-3j-ezd"/>
+                        <outlet property="pastEntryButton" destination="TqF-KP-Lnw" id="lYp-W4-Yst"/>
+                        <outlet property="titleLabel" destination="J3h-db-9qh" id="xpa-Pg-OSI"/>
+                        <outlet property="trackButton" destination="CKx-xp-FxM" id="cd0-nO-kAe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyN-if-BEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -299,6 +324,7 @@
         <image name="track_button" width="264" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k1T-Al-WZE"/>
+        <segue reference="7sk-4q-NSG"/>
+        <segue reference="zpf-j7-7bJ"/>
     </inferredMetricsTieBreakers>
 </document>
