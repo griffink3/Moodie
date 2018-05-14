@@ -11,7 +11,7 @@ import UIKit
 class ViewController4: UIViewController {
     
     // MARK: Properties
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var newEntryButton: UIButton!
     @IBOutlet weak var pastEntryButton: UIButton!
     @IBOutlet weak var trackButton: UIButton!
@@ -22,9 +22,9 @@ class ViewController4: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        titleLabel.text = appDelegate.currUser.name
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textAlignment = .center
+        nameLabel.text = appDelegate.currUser.name
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.textAlignment = .center
     }
     
     override func didReceiveMemoryWarning() {
