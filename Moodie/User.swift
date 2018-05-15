@@ -12,15 +12,15 @@ class User {
     
     // MARK: Properties
     var name: String
-    var entries: Dictionary<NSDate, Entry>
+    var entries: Dictionary<Date, Entry>
     
     // MARK: Initialization
     init(name: String) {
         self.name = name
-        entries = [NSDate: Entry]()
+        entries = [Date: Entry]()
     }
     
-    func addEntry(time: NSDate, entry: Entry) {
+    func addEntry(time: Date, entry: Entry) {
         entries[time] = entry
     }
     

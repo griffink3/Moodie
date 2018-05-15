@@ -463,6 +463,7 @@
                                 <state key="normal" title="Button" image="continue_button"/>
                                 <connections>
                                     <action selector="newUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="d5b-R0-FHh"/>
+                                    <action selector="selectEntry:" destination="GV5-2Y-wGI" eventType="touchUpInside" id="VJ8-8Q-Jr3"/>
                                     <action selector="selectUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="XhV-s1-mOF"/>
                                 </connections>
                             </button>
@@ -478,6 +479,12 @@
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="iQ2-nZ-UT1"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="D4e-wH-Dog" id="S1f-am-8rz"/>
+                        <outlet property="continueButton" destination="s0R-uS-fdp" id="w6Z-Be-Gs0"/>
+                        <outlet property="entryTable" destination="EtW-Dt-Dka" id="PsI-cT-0cM"/>
+                        <outlet property="errorLabel" destination="dHf-T1-akJ" id="IcQ-gu-NQi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKG-Ag-QA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

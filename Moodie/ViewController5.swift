@@ -99,7 +99,7 @@ class ViewController5: UIViewController, UITextViewDelegate {
     @IBAction func newEntry(_ sender: UIButton) {
         print("MADE A NEW ENTRY")
         if (currText != "") {
-            appDelegate.currUser.addEntry(time: NSDate(), entry: Entry(text: currText, happiness: currHappiness, sadness: currSadness, anger: currAnger, fear: currFear))
+            appDelegate.currUser.addEntry(time: Date(), entry: Entry(text: currText, happiness: currHappiness, sadness: currSadness, anger: currAnger, fear: currFear)) 
             errorLabel.text = ""
         } else {
             errorLabel.text = "Please enter text"

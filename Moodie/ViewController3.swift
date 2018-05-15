@@ -73,8 +73,6 @@ class ViewController3: UIViewController, UITableViewDataSource {
             // No user selected
             errorLabel.text = "No user was selected!"
         } else {
-            print(userTable.indexPathForSelectedRow!.row)
-            print(userArray[userTable.indexPathForSelectedRow!.row])
             appDelegate.currUser = appDelegate.users[userArray[userTable.indexPathForSelectedRow!.row]]!
             shouldSegue = true
         }
