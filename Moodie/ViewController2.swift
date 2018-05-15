@@ -27,6 +27,8 @@ class ViewController2: UIViewController, UITextFieldDelegate {
         newNameField.delegate = self
         shouldSegue = false
         errorLabel.text = " "
+        errorLabel.adjustsFontSizeToFitWidth = true
+        errorLabel.textAlignment = .center
     }
     
     override func didReceiveMemoryWarning() {

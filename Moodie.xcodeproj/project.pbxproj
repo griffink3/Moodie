@@ -18,6 +18,9 @@
 		8550650620A8E1640039E9AD /* VC1Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650520A8E1640039E9AD /* VC1Test.swift */; };
 		8550650A20A8F2F10039E9AD /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550650920A8F2F10039E9AD /* ViewController3.swift */; };
 		8581E52C20AA14A70012C695 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581E52B20AA14A70012C695 /* ViewController4.swift */; };
+		8587085F20AA592200190A0C /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587085E20AA592200190A0C /* ViewController5.swift */; };
+		8587086120AA5B0B00190A0C /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587086020AA5B0B00190A0C /* Entry.swift */; };
+		8587086320AA701500190A0C /* ViewController6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587086220AA701500190A0C /* ViewController6.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		8550650520A8E1640039E9AD /* VC1Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC1Test.swift; sourceTree = "<group>"; };
 		8550650920A8F2F10039E9AD /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		8581E52B20AA14A70012C695 /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		8587085E20AA592200190A0C /* ViewController5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
+		8587086020AA5B0B00190A0C /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		8587086220AA701500190A0C /* ViewController6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController6.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 				8550650120A8D7F50039E9AD /* User.swift */,
 				8550650920A8F2F10039E9AD /* ViewController3.swift */,
 				8581E52B20AA14A70012C695 /* ViewController4.swift */,
+				8587085E20AA592200190A0C /* ViewController5.swift */,
+				8587086020AA5B0B00190A0C /* Entry.swift */,
+				8587086220AA701500190A0C /* ViewController6.swift */,
 			);
 			path = Moodie;
 			sourceTree = "<group>";
@@ -212,12 +221,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8587086120AA5B0B00190A0C /* Entry.swift in Sources */,
 				8550650A20A8F2F10039E9AD /* ViewController3.swift in Sources */,
 				8581E52C20AA14A70012C695 /* ViewController4.swift in Sources */,
 				8550650220A8D7F50039E9AD /* User.swift in Sources */,
 				855064E220A37BBE0039E9AD /* ViewController1.swift in Sources */,
 				855064E020A37BBE0039E9AD /* AppDelegate.swift in Sources */,
+				8587086320AA701500190A0C /* ViewController6.swift in Sources */,
 				8550650020A8CD390039E9AD /* ViewController2.swift in Sources */,
+				8587085F20AA592200190A0C /* ViewController5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
