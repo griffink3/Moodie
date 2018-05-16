@@ -15,6 +15,7 @@ class ViewController3: UIViewController, UITableViewDataSource {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var userArray = [String]()
@@ -78,6 +79,15 @@ class ViewController3: UIViewController, UITableViewDataSource {
         }
     }
     
+    @IBAction func deleteUser(_ sender: UIButton) {
+        if (userTable.indexPathForSelectedRow == nil) {
+            // No user selected
+            errorLabel.text = "No user was selected!"
+        } else {
+            appDelegate.users.removeValue(forKey: userArray[userTable.indexPathForSelectedRow!.row])
+            shouldSegue = true
+        }
+    }
     
 }
 

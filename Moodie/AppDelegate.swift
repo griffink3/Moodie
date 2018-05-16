@@ -14,10 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var users: Dictionary<String, User>
     var currUser: User
+    var currEntry: Entry
     
     override init() {
         users = [String: User]()
         currUser = User(name: "default")
+        currEntry = Entry(text: "default", title: "default", happiness: 0, sadness: 0, anger: 0, fear: 0)
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

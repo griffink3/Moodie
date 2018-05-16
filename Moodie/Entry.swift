@@ -13,14 +13,16 @@ class Entry {
     
     // MARK: Properties
     var text: String
+    var title: String
     var happiness: Int
     var sadness: Int
     var anger: Int
     var fear: Int
     
     // MARK: Initialization
-    init(text: String, happiness: Int, sadness: Int, anger: Int, fear: Int) {
+    init(text: String, title: String, happiness: Int, sadness: Int, anger: Int, fear: Int) {
         self.text = text
+        self.title = title
         self.happiness = happiness
         self.sadness = sadness
         self.anger = anger

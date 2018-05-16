@@ -182,7 +182,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-xv-BsH">
-                                <rect key="frame" x="64" y="567" width="92" height="55"/>
+                                <rect key="frame" x="27" y="566" width="80" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="back_button"/>
                                 <connections>
@@ -195,7 +195,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t0-Nh-ZdC">
-                                <rect key="frame" x="176" y="567" width="135" height="55"/>
+                                <rect key="frame" x="223" y="566" width="125" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="continue_button"/>
                                 <connections>
@@ -218,6 +218,16 @@
                                 </attributedString>
                                 <color key="highlightedColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpz-DI-Qju">
+                                <rect key="frame" x="115" y="566" width="98" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="delete_button"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="jlD-vO-ir1" eventType="touchUpInside" id="49h-hD-6ct"/>
+                                    <action selector="deleteUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="VHp-ll-yrD"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="I53-sM-z0w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uss-bp-Xzy"/>
@@ -225,11 +235,13 @@
                     <connections>
                         <outlet property="backButton" destination="Yaj-xv-BsH" id="jkd-pD-g4r"/>
                         <outlet property="continueButton" destination="1t0-Nh-ZdC" id="YIK-S8-rEy"/>
+                        <outlet property="deleteButton" destination="Qpz-DI-Qju" id="yTZ-KT-ofC"/>
                         <outlet property="errorLabel" destination="yZT-ni-YtS" id="QIv-sC-fSQ"/>
                         <outlet property="userTable" destination="JFZ-Bm-1XD" id="DHU-gF-Gm9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dO2-qF-SNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jlD-vO-ir1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="884" y="473.6131934032984"/>
         </scene>
@@ -458,21 +470,33 @@
                                 <color key="highlightedColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0R-uS-fdp">
-                                <rect key="frame" x="182" y="566" width="135" height="55"/>
+                                <rect key="frame" x="223" y="566" width="125" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="continue_button"/>
                                 <connections>
                                     <action selector="newUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="d5b-R0-FHh"/>
                                     <action selector="selectEntry:" destination="GV5-2Y-wGI" eventType="touchUpInside" id="VJ8-8Q-Jr3"/>
                                     <action selector="selectUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="XhV-s1-mOF"/>
+                                    <segue destination="ttq-Ai-n9O" kind="show" id="ofz-7P-sFg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-wH-Dog">
-                                <rect key="frame" x="68" y="566" width="92" height="55"/>
+                                <rect key="frame" x="27" y="566" width="80" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="back_button"/>
                                 <connections>
                                     <segue destination="zMj-2G-5KM" kind="show" id="GhN-Uu-HST"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1o-a1-j7J">
+                                <rect key="frame" x="115" y="566" width="98" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="delete_button"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="jlD-vO-ir1" eventType="touchUpInside" id="V08-by-yFH"/>
+                                    <action selector="deleteEntry:" destination="GV5-2Y-wGI" eventType="touchUpInside" id="vC0-G7-AWa"/>
+                                    <action selector="deleteUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="du1-kP-6kd"/>
+                                    <segue destination="zMj-2G-5KM" kind="show" id="Zzc-Ha-Thc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -481,7 +505,8 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="D4e-wH-Dog" id="S1f-am-8rz"/>
-                        <outlet property="continueButton" destination="s0R-uS-fdp" id="w6Z-Be-Gs0"/>
+                        <outlet property="continueButton" destination="m1o-a1-j7J" id="hzD-95-eX0"/>
+                        <outlet property="deleteButton" destination="m1o-a1-j7J" id="rPi-wR-fdV"/>
                         <outlet property="entryTable" destination="EtW-Dt-Dka" id="PsI-cT-0cM"/>
                         <outlet property="errorLabel" destination="dHf-T1-akJ" id="IcQ-gu-NQi"/>
                     </connections>
@@ -490,10 +515,130 @@
             </objects>
             <point key="canvasLocation" x="2413.5999999999999" y="570.76461769115451"/>
         </scene>
+        <!--PastEntryPage-->
+        <scene sceneID="OJU-gM-zSi">
+            <objects>
+                <viewController title="PastEntryPage" id="ttq-Ai-n9O" customClass="ViewController7" customModule="Moodie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="evi-yT-zR5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-f8-a7b">
+                                <rect key="frame" x="27" y="20" width="321" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Past Entry">
+                                        <attributes>
+                                            <font key="NSFont" size="33" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-II-Mor">
+                                <rect key="frame" x="41" y="155" width="293" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Happy"/>
+                                    <segment title="Sad"/>
+                                    <segment title="Angry"/>
+                                    <segment title="Afraid"/>
+                                </segments>
+                                <color key="tintColor" red="0.1407048471" green="0.4691615844" blue="0.80582091970000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="wDh-BR-xhW"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="entryField" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEE-Hr-bdT">
+                                <rect key="frame" x="27" y="106" width="321" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="KNe-7p-ZTv">
+                                <rect key="frame" x="39" y="198" width="241" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.1069561614" green="0.80582091970000003" blue="0.71488720959999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="minimumTrackTintColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="maximumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="thumbTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="adjustSlider:" destination="ujB-X9-4P3" eventType="valueChanged" id="wJI-da-GgQ"/>
+                                    <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="ZWL-Dr-yk4"/>
+                                </connections>
+                            </slider>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="valueField" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-eR-HVr">
+                                <rect key="frame" x="279" y="198" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="0">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="Arial-BoldMT"/>
+                                            <font key="NSOriginalFont" size="24" name="Arial-BoldMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYJ-mo-TSv">
+                                <rect key="frame" x="56" y="566" width="92" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="back_button"/>
+                                <connections>
+                                    <segue destination="GV5-2Y-wGI" kind="show" id="Cvo-cE-Isq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7n-VW-BBO">
+                                <rect key="frame" x="168" y="566" width="135" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="continue_button"/>
+                                <connections>
+                                    <action selector="newEntry:" destination="ujB-X9-4P3" eventType="touchUpInside" id="ysa-BZ-Ihy"/>
+                                    <action selector="newUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="04h-wf-yNq"/>
+                                    <segue destination="zMj-2G-5KM" kind="show" id="I8n-gg-hV6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LA-ai-Uxq">
+                                <rect key="frame" x="27" y="520" width="321" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.140704847080527" green="0.46916158443765804" blue="0.80582091968911929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="iVg-2V-jCy"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="aYJ-mo-TSv" id="exn-Id-hZF"/>
+                        <outlet property="continueButton" destination="i7n-VW-BBO" id="wr9-hy-JZj"/>
+                        <outlet property="emotionControl" destination="0vw-II-Mor" id="zTY-5k-Wsa"/>
+                        <outlet property="emotionSlider" destination="KNe-7p-ZTv" id="abq-UJ-zo7"/>
+                        <outlet property="entryField" destination="JEE-Hr-bdT" id="Iqx-Hg-P3p"/>
+                        <outlet property="errorLabel" destination="9LA-ai-Uxq" id="VYD-5T-xly"/>
+                        <outlet property="titleLabel" destination="YHJ-f8-a7b" id="xNL-PW-faW"/>
+                        <outlet property="valueField" destination="EzZ-eR-HVr" id="GTa-Tw-jqm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EuL-AW-G3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3108" y="570.76461769115451"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back_button" width="222" height="130"/>
         <image name="continue_button" width="357" height="123"/>
+        <image name="delete_button" width="268" height="123"/>
         <image name="existing_profile_button" width="339" height="123"/>
         <image name="home_button" width="262" height="126"/>
         <image name="new_entry_button" width="394" height="126"/>
@@ -502,7 +647,8 @@
         <image name="track_button" width="264" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mPU-uM-Jxt"/>
-        <segue reference="zpf-j7-7bJ"/>
+        <segue reference="Cvo-cE-Isq"/>
+        <segue reference="I8n-gg-hV6"/>
+        <segue reference="D6H-on-MFv"/>
     </inferredMetricsTieBreakers>
 </document>

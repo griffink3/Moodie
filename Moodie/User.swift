@@ -12,16 +12,23 @@ class User {
     
     // MARK: Properties
     var name: String
-    var entries: Dictionary<Date, Entry>
+    var entries: Dictionary<String, Entry>
     
     // MARK: Initialization
     init(name: String) {
         self.name = name
-        entries = [Date: Entry]()
+        entries = [String: Entry]()
     }
     
-    func addEntry(time: Date, entry: Entry) {
-        entries[time] = entry
+    func addEntry(title: String, entry: Entry) {
+        entries[title] = entry
+    }
+    
+    func titleExist(title: String) -> Bool {
+        if (entries[title] == nil) {
+            return false
+        }
+        return true
     }
     
 }

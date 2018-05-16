@@ -15,9 +15,10 @@ class ViewController6: UIViewController, UITableViewDataSource {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    var entryArray = [Date]()
+    var entryArray = [String]()
     var shouldSegue = false
     
     override func viewDidLoad() {
@@ -39,22 +40,15 @@ class ViewController6: UIViewController, UITableViewDataSource {
     
     override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
         if withIdentifier == "selectEntry" {
-            print("selectEntry segue")
             return shouldSegue
         }
         return true
     }
     
     func getEntries() {
-        for (date, _) in appDelegate.currUser.entries {
-            entryArray.append(date)
+        for (title, _) in appDelegate.currUser.entries {
+            entryArray.append(title)
         }
-    }
-    
-    func dateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormatter.string(from: date)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,10 +58,9 @@ class ViewController6: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("BUILDING TABLE")
         let cell = entryTable.dequeueReusableCell(withIdentifier: "entry", for: indexPath)
         print(entryArray[indexPath.row])
-        cell.textLabel!.text = dateToString(date: entryArray[indexPath.row])
+        cell.textLabel!.text = entryArray[indexPath.row]
         return cell
     }
     
@@ -78,10 +71,19 @@ class ViewController6: UIViewController, UITableViewDataSource {
             // No user selected
             errorLabel.text = "No user was selected!"
         } else {
-            // should set the current entry here
+            appDelegate.currEntry = appDelegate.currUser.entries[entryArray[entryTable.indexPathForSelectedRow!.row]]!
             shouldSegue = true
         }
     }
     
+    @IBAction func deleteEntry(_ sender: UIButton) {
+        if (entryTable.indexPathForSelectedRow == nil) {
+            // No user selected
+            errorLabel.text = "No user was selected!"
+        } else {
+            appDelegate.currUser.entries.removeValue(forKey: entryArray[entryTable.indexPathForSelectedRow!.row])
+            shouldSegue = true
+        }
+    }
     
 }

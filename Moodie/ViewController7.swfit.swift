@@ -1,5 +1,5 @@
 //
-//  ViewController5.swift
+//  ViewController7.swift
 //  Moodie
 //
 //  Created by Griffin on 5/9/18.
@@ -8,16 +8,9 @@
 
 import UIKit
 
-class ViewController5: UIViewController, UITextFieldDelegate {
+class ViewController7: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
-    @IBOutlet weak var emotionControl: UISegmentedControl!
-    @IBOutlet weak var emotionSlider: UISlider!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var valueField: UITextField!
-    @IBOutlet weak var entryField: UITextField!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var currText: String = ""
@@ -57,12 +50,6 @@ class ViewController5: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func dateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormatter.string(from: date)
-    }
-    
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -100,7 +87,7 @@ class ViewController5: UIViewController, UITextFieldDelegate {
         if (emotionControl.selectedSegmentIndex == 0) {
             currHappiness = Int(sender.value)
             valueField.text = String(currHappiness)
-         } else if (emotionControl.selectedSegmentIndex == 1) {
+        } else if (emotionControl.selectedSegmentIndex == 1) {
             currSadness = Int(sender.value)
             valueField.text = String(currSadness)
         } else if (emotionControl.selectedSegmentIndex == 2) {
@@ -130,14 +117,8 @@ class ViewController5: UIViewController, UITextFieldDelegate {
     
     @IBAction func newEntry(_ sender: UIButton) {
         if (currText != "") {
-            let date: Date = Date()
-            let title: String = dateToString(date: date)
-            if (!appDelegate.currUser.titleExist(title: title)) {
-                appDelegate.currUser.addEntry(title: title, entry: Entry(text: currText, title: dateToString(date: date), happiness: currHappiness, sadness: currSadness, anger: currAnger, fear: currFear))
-                errorLabel.text = ""
-            } else {
-                errorLabel.text = "Title already exists"
-            }
+            appDelegate.currUser.addEntry(time: Date(), entry: Entry(text: currText, happiness: currHappiness, sadness: currSadness, anger: currAnger, fear: currFear))
+            errorLabel.text = ""
         } else {
             errorLabel.text = "Please enter text"
         }
