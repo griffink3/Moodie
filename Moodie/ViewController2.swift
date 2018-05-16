@@ -23,7 +23,6 @@ class ViewController2: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("LOADING")
         newNameField.delegate = self
         shouldSegue = false
         errorLabel.text = " "
@@ -38,7 +37,6 @@ class ViewController2: UIViewController, UITextFieldDelegate {
     
     override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
         if withIdentifier == "newUser" {
-            print("newUser segue")
             return shouldSegue
         }
         return true
@@ -52,13 +50,11 @@ class ViewController2: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("HEREEE")
         currName = textField.text!
     }
     
     // MARK: Actions
     @IBAction func newUser(_ sender: UIButton) {
-        print("newUser")
         print(currName)
         if (currName == "" || appDelegate.users[currName] != nil) {
             // Throw error

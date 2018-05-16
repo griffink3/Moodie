@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ViewController5: UIViewController, UITextViewDelegate {
+class ViewController5: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
-    @IBOutlet weak var entryField: UITextView!
     @IBOutlet weak var emotionControl: UISegmentedControl!
     @IBOutlet weak var emotionSlider: UISlider!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var valueField: UITextField!
+    @IBOutlet weak var entryField: UITextField!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var currText: String = ""
@@ -29,7 +29,6 @@ class ViewController5: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        entryField.delegate = self
         currText = ""
         currHappiness = 0
         currSadness = 0
@@ -38,9 +37,10 @@ class ViewController5: UIViewController, UITextViewDelegate {
         errorLabel.adjustsFontSizeToFitWidth = true
         errorLabel.textAlignment = .center
         errorLabel.text = " "
-        valueLabel.adjustsFontSizeToFitWidth = true
-        valueLabel.textAlignment = .center
-        valueLabel.text = " 0"
+        entryField.delegate = self
+        entryField.text = "Enter entry here"
+        valueField.delegate = self
+        valueField.text = "0"
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,47 +57,72 @@ class ViewController5: UIViewController, UITextViewDelegate {
         return true
     }
     
-    // MARK: UITextViewDelegate
-    func textViewDidEndEditing(_ textView: UITextView) {
-        currText = textView.text
-        print(currText)
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField.restorationIdentifier == "entryField") {
+            currText = textField.text!
+        } else if (textField.restorationIdentifier == "valueField") {
+            if (Float(textField.text!) == nil) {
+                errorLabel.text = "Please enter a valid number"
+            } else {
+                errorLabel.text = " "
+                if (emotionControl.selectedSegmentIndex == 0) {
+                    currHappiness = Int(Float(textField.text!)!)
+                    valueField.text = String(currHappiness)
+                } else if (emotionControl.selectedSegmentIndex == 1) {
+                    currSadness = Int(Float(textField.text!)!)
+                    valueField.text = String(currSadness)
+                } else if (emotionControl.selectedSegmentIndex == 2) {
+                    currAnger = Int(Float(textField.text!)!)
+                    valueField.text = String(currAnger)
+                } else if (emotionControl.selectedSegmentIndex == 3) {
+                    currFear = Int(Float(textField.text!)!)
+                    valueField.text = String(currFear)
+                }
+            }
+        }
     }
     
     // MARK: Actions
     @IBAction func adjustSlider(_ sender: UISlider) {
         if (emotionControl.selectedSegmentIndex == 0) {
             currHappiness = Int(sender.value)
-            valueLabel.text = " " + String(currHappiness)
+            valueField.text = String(currHappiness)
          } else if (emotionControl.selectedSegmentIndex == 1) {
             currSadness = Int(sender.value)
-            valueLabel.text = " " + String(currSadness)
+            valueField.text = String(currSadness)
         } else if (emotionControl.selectedSegmentIndex == 2) {
             currAnger = Int(sender.value)
-            valueLabel.text = " " + String(currAnger)
+            valueField.text = String(currAnger)
         } else if (emotionControl.selectedSegmentIndex == 3) {
             currFear = Int(sender.value)
-            valueLabel.text = " " + String(currFear)
+            valueField.text = String(currFear)
         }
     }
     
     @IBAction func changeEmotion(_ sender: UISegmentedControl) {
         if (emotionControl.selectedSegmentIndex == 0) {
-            valueLabel.text = " " + String(currHappiness)
+            valueField.text = String(currHappiness)
             emotionSlider.setValue(Float(currHappiness), animated: true)
         } else if (emotionControl.selectedSegmentIndex == 1) {
-            valueLabel.text = " " + String(currSadness)
+            valueField.text = String(currSadness)
             emotionSlider.setValue(Float(currSadness), animated: true)
         } else if (emotionControl.selectedSegmentIndex == 2) {
-            valueLabel.text = " " + String(currAnger)
+            valueField.text = String(currAnger)
             emotionSlider.setValue(Float(currAnger), animated: true)
         } else if (emotionControl.selectedSegmentIndex == 3) {
-            valueLabel.text = " " + String(currFear)
+            valueField.text = String(currFear)
             emotionSlider.setValue(Float(currFear), animated: true)
         }
     }
     
     @IBAction func newEntry(_ sender: UIButton) {
-        print("MADE A NEW ENTRY")
         if (currText != "") {
             appDelegate.currUser.addEntry(time: Date(), entry: Entry(text: currText, happiness: currHappiness, sadness: currSadness, anger: currAnger, fear: currFear)) 
             errorLabel.text = ""
@@ -105,8 +130,5 @@ class ViewController5: UIViewController, UITextViewDelegate {
             errorLabel.text = "Please enter text"
         }
     }
-    
-    
-    
     
 }
