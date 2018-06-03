@@ -662,9 +662,8 @@
         <image name="track_button" width="264" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ofz-7P-sFg"/>
         <segue reference="Cvo-cE-Isq"/>
-        <segue reference="7sk-4q-NSG"/>
+        <segue reference="I8n-gg-hV6"/>
         <segue reference="zpf-j7-7bJ"/>
     </inferredMetricsTieBreakers>
 </document>

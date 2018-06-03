@@ -53,28 +53,34 @@ class ViewController7: UIViewController, UITextFieldDelegate {
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
-        var dataEntries: [ChartDataEntry] = []
+        var dataEntries: [PieChartDataEntry] = []
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
+            let dataEntry = PieChartDataEntry()
+            dataEntry.y = values[i]
+            dataEntry.label = dataPoints[i]
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Emotional Weight")
-        let pieChartData = PieChartData()
-        pieChartData.addDataSet(pieChartDataSet)
-        pieChart.data = pieChartData
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
         
         var colors: [UIColor] = []
         // Adding yellow
-        colors.append(UIColor(red: CGFloat(255/255), green: CGFloat(255/255), blue: CGFloat(0/255), alpha: 1))
+        colors.append(UIColor(red: 0.9882, green: 0.9647, blue: 0.502, alpha: 1.0))
         // Adding blue
-        colors.append(UIColor(red: CGFloat(0/255), green: CGFloat(0/255), blue: CGFloat(255/255), alpha: 1))
+        colors.append(UIColor(red: 0.0784, green: 0.5216, blue: 1, alpha: 1.0))
         // Adding red
-        colors.append(UIColor(red: CGFloat(255/255), green: CGFloat(0/255), blue: CGFloat(0/255), alpha: 1))
+        colors.append(UIColor(red: 1, green: 0.5098, blue: 0.5098, alpha: 1.0))
         // Adding black
-        colors.append(UIColor(red: CGFloat(0/255), green: CGFloat(0/255), blue: CGFloat(0/255), alpha: 1))
+        colors.append(UIColor(red: 0.3294, green: 0.3294, blue: 0.3294, alpha: 1.0))
         
         pieChartDataSet.colors = colors
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+        pieChart.data = pieChartData
+        
+        let d = Description()
+        d.text = "Emotional Weights"
+        pieChart.chartDescription = d
+        pieChart.transparentCircleColor = UIColor.clear
     }
     
     // MARK: UITextFieldDelegate

@@ -67,14 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        print("RESTORING ENTRIES")
         if let savedEntries = loadEntries() {
             // Since entries store their users by name we can use the dictionary to restore the entries to
             // their proper users
-            print("IN")
             for entry in savedEntries {
-                print(entry.text)
-                if (!(nameToUser[entry.user]?.entryExists(title: entry.title))!) {
+                if (nameToUser[entry.user] != nil && !(nameToUser[entry.user]?.entryExists(title: entry.title))!) {
                     nameToUser[entry.user]?.addEntry(entry: entry)
                 }
             }
@@ -114,12 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Data Methods
     func saveEntries() {
+        entryArray = [Entry]()
         for user in userArray {
             entryArray += user.entries
-        }
-        print("PRINTING BEFORE SAVING ENTRIES")
-        for entry in entryArray {
-            print(entry.text)
         }
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(entryArray, toFile: Entry.ArchiveURL.path)
         if isSuccessfulSave {

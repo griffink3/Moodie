@@ -16,9 +16,9 @@ class Entry: NSObject, NSCoding  {
         static let title = "title"
         static let text = "text"
         static let happiness = "happiness"
-        static let sadness = "happiness"
-        static let anger = "happiness"
-        static let fear = "happiness"
+        static let sadness = "sadness"
+        static let anger = "anger"
+        static let fear = "fear"
         static let user = "user"
     }
     
@@ -49,6 +49,12 @@ class Entry: NSObject, NSCoding  {
     // MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(title, forKey: PropertyKey.title)
+        aCoder.encode(text, forKey: PropertyKey.text)
+        aCoder.encode(String(happiness), forKey: PropertyKey.happiness)
+        aCoder.encode(String(sadness), forKey: PropertyKey.sadness)
+        aCoder.encode(String(anger), forKey: PropertyKey.anger)
+        aCoder.encode(String(fear), forKey: PropertyKey.fear)
+        aCoder.encode(user, forKey: PropertyKey.user)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -60,19 +66,19 @@ class Entry: NSObject, NSCoding  {
             os_log("Unable to decode the text for an entry object.", log: OSLog.default, type: .debug)
             return nil
         }
-        guard let happiness = aDecoder.decodeObject(forKey: PropertyKey.happiness) as? Int else {
+        guard let happiness = aDecoder.decodeObject(forKey: PropertyKey.happiness) as? String else {
             os_log("Unable to decode the happiness for an entry object.", log: OSLog.default, type: .debug)
             return nil
         }
-        guard let sadness = aDecoder.decodeObject(forKey: PropertyKey.sadness) as? Int else {
+        guard let sadness = aDecoder.decodeObject(forKey: PropertyKey.sadness) as? String else {
             os_log("Unable to decode the sadness for an entry object.", log: OSLog.default, type: .debug)
             return nil
         }
-        guard let anger = aDecoder.decodeObject(forKey: PropertyKey.anger) as? Int else {
+        guard let anger = aDecoder.decodeObject(forKey: PropertyKey.anger) as? String else {
             os_log("Unable to decode the anger for an entry object.", log: OSLog.default, type: .debug)
             return nil
         }
-        guard let fear = aDecoder.decodeObject(forKey: PropertyKey.fear) as? Int else {
+        guard let fear = aDecoder.decodeObject(forKey: PropertyKey.fear) as? String else {
             os_log("Unable to decode the fear for an entry object.", log: OSLog.default, type: .debug)
             return nil
         }
@@ -80,7 +86,7 @@ class Entry: NSObject, NSCoding  {
             os_log("Unable to decode the user for an entry object.", log: OSLog.default, type: .debug)
             return nil
         }
-        self.init(text: text, title: title, happiness: happiness, sadness: sadness, anger: anger, fear: fear, user: user)
+        self.init(text: text, title: title, happiness: Int(happiness)!, sadness: Int(sadness)!, anger: Int(anger)!, fear: Int(fear)!, user: user)
     }
     
 }
