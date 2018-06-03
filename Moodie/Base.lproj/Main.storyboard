@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -186,7 +186,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="back_button"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="D6H-on-MFv"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="D6H-on-MFv"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JFZ-Bm-1XD">
@@ -225,7 +225,7 @@
                                 <connections>
                                     <action selector="deleteButton:" destination="jlD-vO-ir1" eventType="touchUpInside" id="49h-hD-6ct"/>
                                     <action selector="deleteUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="VHp-ll-yrD"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="I53-sM-z0w"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="selectUser" id="I53-sM-z0w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -411,10 +411,16 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-7d-BnR" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="234" width="343" height="262"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="QDg-la-yko"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="backButton" destination="pfR-lX-aZb" id="di1-Co-rUh"/>
                         <outlet property="continueButton" destination="PrI-4F-oAR" id="SwT-LA-C0M"/>
@@ -422,6 +428,7 @@
                         <outlet property="emotionSlider" destination="EY1-4E-kgA" id="Udw-0d-B08"/>
                         <outlet property="entryField" destination="XND-Hp-R4c" id="h0N-2F-pXa"/>
                         <outlet property="errorLabel" destination="djc-cK-Kgx" id="MdV-5M-Oe5"/>
+                        <outlet property="pieChart" destination="dtw-7d-BnR" id="NtM-C5-gTF"/>
                         <outlet property="valueField" destination="lxp-81-LiW" id="k73-Xk-2TZ"/>
                     </connections>
                 </viewController>
@@ -477,7 +484,7 @@
                                     <action selector="newUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="d5b-R0-FHh"/>
                                     <action selector="selectEntry:" destination="GV5-2Y-wGI" eventType="touchUpInside" id="VJ8-8Q-Jr3"/>
                                     <action selector="selectUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="XhV-s1-mOF"/>
-                                    <segue destination="ttq-Ai-n9O" kind="show" id="ofz-7P-sFg"/>
+                                    <segue destination="ttq-Ai-n9O" kind="show" identifier="selectEntry" id="ofz-7P-sFg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-wH-Dog">
@@ -496,7 +503,7 @@
                                     <action selector="deleteButton:" destination="jlD-vO-ir1" eventType="touchUpInside" id="V08-by-yFH"/>
                                     <action selector="deleteEntry:" destination="GV5-2Y-wGI" eventType="touchUpInside" id="vC0-G7-AWa"/>
                                     <action selector="deleteUser:" destination="Nph-7w-Z7o" eventType="touchUpInside" id="du1-kP-6kd"/>
-                                    <segue destination="zMj-2G-5KM" kind="show" id="Zzc-Ha-Thc"/>
+                                    <segue destination="zMj-2G-5KM" kind="show" identifier="selectEntry" id="Zzc-Ha-Thc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -548,6 +555,7 @@
                                 </segments>
                                 <color key="tintColor" red="0.1407048471" green="0.4691615844" blue="0.80582091970000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <action selector="changeEmotion:" destination="ttq-Ai-n9O" eventType="valueChanged" id="3qW-79-qSS"/>
                                     <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="wDh-BR-xhW"/>
                                 </connections>
                             </segmentedControl>
@@ -565,6 +573,7 @@
                                 <color key="maximumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="thumbTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <action selector="adjustSlider:" destination="ttq-Ai-n9O" eventType="valueChanged" id="dRN-0b-gzG"/>
                                     <action selector="adjustSlider:" destination="ujB-X9-4P3" eventType="valueChanged" id="wJI-da-GgQ"/>
                                     <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="ZWL-Dr-yk4"/>
                                 </connections>
@@ -598,7 +607,7 @@
                                 <connections>
                                     <action selector="newEntry:" destination="ujB-X9-4P3" eventType="touchUpInside" id="ysa-BZ-Ihy"/>
                                     <action selector="newUser:" destination="yCI-l1-xBo" eventType="touchUpInside" id="04h-wf-yNq"/>
-                                    <segue destination="zMj-2G-5KM" kind="show" id="I8n-gg-hV6"/>
+                                    <segue destination="zMj-2G-5KM" kind="show" identifier="submit" id="I8n-gg-hV6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LA-ai-Uxq">
@@ -615,19 +624,25 @@
                                 </attributedString>
                                 <color key="highlightedColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-5p-X9P" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="250" width="343" height="262"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="iVg-2V-jCy"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="aYJ-mo-TSv" id="exn-Id-hZF"/>
-                        <outlet property="continueButton" destination="i7n-VW-BBO" id="wr9-hy-JZj"/>
-                        <outlet property="emotionControl" destination="0vw-II-Mor" id="zTY-5k-Wsa"/>
-                        <outlet property="emotionSlider" destination="KNe-7p-ZTv" id="abq-UJ-zo7"/>
-                        <outlet property="entryField" destination="JEE-Hr-bdT" id="Iqx-Hg-P3p"/>
-                        <outlet property="errorLabel" destination="9LA-ai-Uxq" id="VYD-5T-xly"/>
+                        <outlet property="backButton" destination="aYJ-mo-TSv" id="gwY-yg-D1Q"/>
+                        <outlet property="continueButton" destination="i7n-VW-BBO" id="gRL-QP-Wdy"/>
+                        <outlet property="emotionControl" destination="0vw-II-Mor" id="VhL-vs-dte"/>
+                        <outlet property="emotionSlider" destination="KNe-7p-ZTv" id="R5z-Ms-Y8e"/>
+                        <outlet property="entryField" destination="JEE-Hr-bdT" id="2Dg-Xm-hhU"/>
+                        <outlet property="errorLabel" destination="9LA-ai-Uxq" id="jFw-fC-HMD"/>
+                        <outlet property="pieChart" destination="Iar-5p-X9P" id="Snf-1m-sEA"/>
                         <outlet property="titleLabel" destination="YHJ-f8-a7b" id="xNL-PW-faW"/>
-                        <outlet property="valueField" destination="EzZ-eR-HVr" id="GTa-Tw-jqm"/>
+                        <outlet property="valueField" destination="EzZ-eR-HVr" id="lQg-Qv-Olm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuL-AW-G3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -647,8 +662,9 @@
         <image name="track_button" width="264" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ofz-7P-sFg"/>
         <segue reference="Cvo-cE-Isq"/>
-        <segue reference="I8n-gg-hV6"/>
-        <segue reference="D6H-on-MFv"/>
+        <segue reference="7sk-4q-NSG"/>
+        <segue reference="zpf-j7-7bJ"/>
     </inferredMetricsTieBreakers>
 </document>

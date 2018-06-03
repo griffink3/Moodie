@@ -18,8 +18,8 @@ class ViewController3: UIViewController, UITableViewDataSource {
     @IBOutlet weak var deleteButton: UIButton!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    var userArray = [String]()
-    var shouldSegue: Bool = false
+    var userArray = [User]()
+    var delete: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,12 @@ class ViewController3: UIViewController, UITableViewDataSource {
         userTable.dataSource = self
         userTable.allowsSelection = true
         userTable.allowsMultipleSelection = false
-        shouldSegue = false
         errorLabel.adjustsFontSizeToFitWidth = true
         errorLabel.textAlignment = .center
+        userArray = appDelegate.userArray
+        for user in userArray {
+            print(user.name)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,54 +43,49 @@ class ViewController3: UIViewController, UITableViewDataSource {
     
     override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
         if withIdentifier == "selectUser" {
-            print("selectUser segue")
-            return shouldSegue
+            if (userTable.indexPathForSelectedRow == nil) {
+                // No user selected
+                errorLabel.text = "No user was selected!"
+                return false
+            } else {
+                if delete {
+                    for (index, user) in appDelegate.userArray.enumerated() {
+                        if (user.name == userArray[userTable.indexPathForSelectedRow!.row].name) {
+                            appDelegate.userArray.remove(at: index)
+                        }
+                    }
+                    appDelegate.updateUserArray()
+                } else {
+                    appDelegate.currUser = userArray[userTable.indexPathForSelectedRow!.row]
+                }
+            }
         }
         return true
     }
     
-    func getUsers() {
-        for (name, _) in appDelegate.users {
-            print(name)
-            userArray.append(name)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        userArray.removeAll()
-        getUsers()
         return userArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("BUILDING TABLE")
-        let cell = userTable.dequeueReusableCell(withIdentifier: "user", for: indexPath) 
-        print(userArray[indexPath.row])
-        cell.textLabel!.text = userArray[indexPath.row]
+        let cell = userTable.dequeueReusableCell(withIdentifier: "user", for: indexPath)
+        cell.textLabel!.text = userArray[indexPath.row].name
         return cell
     }
+    
     
     // MARK: Actions
     @IBAction func selectUser(_ sender: UIButton) {
         // Selects the user
-        if (userTable.indexPathForSelectedRow == nil) {
-            // No user selected
-            errorLabel.text = "No user was selected!"
-        } else {
-            appDelegate.currUser = appDelegate.users[userArray[userTable.indexPathForSelectedRow!.row]]!
-            shouldSegue = true
-        }
+        delete = false
     }
     
     @IBAction func deleteUser(_ sender: UIButton) {
-        if (userTable.indexPathForSelectedRow == nil) {
-            // No user selected
-            errorLabel.text = "No user was selected!"
-        } else {
-            appDelegate.users.removeValue(forKey: userArray[userTable.indexPathForSelectedRow!.row])
-            shouldSegue = true
-        }
+        // Deletes the user
+        delete = true
     }
+    
+
     
 }
 

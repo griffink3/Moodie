@@ -18,8 +18,8 @@ class ViewController6: UIViewController, UITableViewDataSource {
     @IBOutlet weak var deleteButton: UIButton!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    var entryArray = [String]()
-    var shouldSegue = false
+    var entryArray = [Entry]()
+    var delete: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class ViewController6: UIViewController, UITableViewDataSource {
         entryTable.allowsMultipleSelection = false
         errorLabel.adjustsFontSizeToFitWidth = true
         errorLabel.textAlignment = .center
-        shouldSegue = false
+        entryArray = appDelegate.currUser.entries
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,50 +40,44 @@ class ViewController6: UIViewController, UITableViewDataSource {
     
     override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
         if withIdentifier == "selectEntry" {
-            return shouldSegue
+            if (entryTable.indexPathForSelectedRow == nil) {
+                // No user selected
+                errorLabel.text = "No user was selected!"
+                return false
+            } else {
+                if delete {
+                    for (index, entry) in appDelegate.currUser.entries.enumerated() {
+                        if (entry.title == entryArray[entryTable.indexPathForSelectedRow!.row].title) {
+                            appDelegate.currUser.entries.remove(at: index)
+                        }
+                    }
+                } else {
+                    appDelegate.currEntry = entryArray[entryTable.indexPathForSelectedRow!.row]
+                }
+            }
         }
         return true
     }
     
-    func getEntries() {
-        for (title, _) in appDelegate.currUser.entries {
-            entryArray.append(title)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        entryArray.removeAll()
-        getEntries()
         return entryArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = entryTable.dequeueReusableCell(withIdentifier: "entry", for: indexPath)
-        print(entryArray[indexPath.row])
-        cell.textLabel!.text = entryArray[indexPath.row]
+        cell.textLabel!.text = entryArray[indexPath.row].title
         return cell
     }
     
     // MARK: Actions
     @IBAction func selectEntry(_ sender: UIButton) {
         // Selects the entry
-        if (entryTable.indexPathForSelectedRow == nil) {
-            // No user selected
-            errorLabel.text = "No user was selected!"
-        } else {
-            appDelegate.currEntry = appDelegate.currUser.entries[entryArray[entryTable.indexPathForSelectedRow!.row]]!
-            shouldSegue = true
-        }
+        delete = false
     }
     
     @IBAction func deleteEntry(_ sender: UIButton) {
-        if (entryTable.indexPathForSelectedRow == nil) {
-            // No user selected
-            errorLabel.text = "No user was selected!"
-        } else {
-            appDelegate.currUser.entries.removeValue(forKey: entryArray[entryTable.indexPathForSelectedRow!.row])
-            shouldSegue = true
-        }
+        // Deletes the entry
+        delete = true
     }
     
 }

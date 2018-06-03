@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class ViewController7: UIViewController, UITextFieldDelegate {
     
@@ -19,11 +20,11 @@ class ViewController7: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
-    @IBAction func deleteButton(_ sender: Any) {
-    }
+    @IBOutlet weak var pieChart: PieChartView!
     
     var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    var currEntry: Entry = Entry(text: "default", title: "default", happiness: 0, sadness: 0, anger: 0, fear: 0)
+    var currEntry: Entry = Entry(text: "default", title: "default", happiness: 0, sadness: 0, anger: 0, fear: 0, user: "default")
+    var emotions = ["Happiness", "Sadness", "Anger", "Fear"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class ViewController7: UIViewController, UITextFieldDelegate {
         entryField.text = currEntry.text
         valueField.delegate = self
         valueField.text = String(currEntry.happiness)
+        updateChart()
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,13 +48,33 @@ class ViewController7: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
-        if withIdentifier == "submitEntry" {
-            if (currEntry.text == "") {
-                return false
-            }
+    func updateChart() {
+        setChart(dataPoints: emotions, values: [Double(currEntry.happiness), Double(currEntry.sadness), Double(currEntry.anger), Double(currEntry.fear)])
+    }
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        var dataEntries: [ChartDataEntry] = []
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
+            dataEntries.append(dataEntry)
         }
-        return true
+        
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Emotional Weight")
+        let pieChartData = PieChartData()
+        pieChartData.addDataSet(pieChartDataSet)
+        pieChart.data = pieChartData
+        
+        var colors: [UIColor] = []
+        // Adding yellow
+        colors.append(UIColor(red: CGFloat(255/255), green: CGFloat(255/255), blue: CGFloat(0/255), alpha: 1))
+        // Adding blue
+        colors.append(UIColor(red: CGFloat(0/255), green: CGFloat(0/255), blue: CGFloat(255/255), alpha: 1))
+        // Adding red
+        colors.append(UIColor(red: CGFloat(255/255), green: CGFloat(0/255), blue: CGFloat(0/255), alpha: 1))
+        // Adding black
+        colors.append(UIColor(red: CGFloat(0/255), green: CGFloat(0/255), blue: CGFloat(0/255), alpha: 1))
+        
+        pieChartDataSet.colors = colors
     }
     
     // MARK: UITextFieldDelegate
@@ -66,8 +88,8 @@ class ViewController7: UIViewController, UITextFieldDelegate {
         if (textField.restorationIdentifier == "entryField") {
             currEntry.text = textField.text!
         } else if (textField.restorationIdentifier == "valueField") {
-            if (Float(textField.text!) == nil) {
-                errorLabel.text = "Please enter a valid number"
+            if (Int(textField.text!) == nil || Int(textField.text!)! > 100) {
+                errorLabel.text = "Please enter a valid integer"
             } else {
                 errorLabel.text = " "
                 if (emotionControl.selectedSegmentIndex == 0) {
@@ -83,8 +105,21 @@ class ViewController7: UIViewController, UITextFieldDelegate {
                     currEntry.fear = Int(Float(textField.text!)!)
                     valueField.text = String(currEntry.fear)
                 }
+                updateChart()
             }
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
+        if withIdentifier == "submit" {
+            for (index, entry) in appDelegate.currUser.entries.enumerated() {
+                if (entry.title == currEntry.title) {
+                    appDelegate.currUser.entries.remove(at: index)
+                }
+            }
+            appDelegate.currUser.entries.append(currEntry)
+        }
+        return true
     }
     
     // MARK: Actions
@@ -102,6 +137,7 @@ class ViewController7: UIViewController, UITextFieldDelegate {
             currEntry.fear = Int(sender.value)
             valueField.text = String(currEntry.fear)
         }
+        updateChart()
     }
     
     @IBAction func changeEmotion(_ sender: UISegmentedControl) {
@@ -117,14 +153,6 @@ class ViewController7: UIViewController, UITextFieldDelegate {
         } else if (emotionControl.selectedSegmentIndex == 3) {
             valueField.text = String(currEntry.fear)
             emotionSlider.setValue(Float(currEntry.fear), animated: true)
-        }
-    }
-    
-    @IBAction func newEntry(_ sender: UIButton) {
-        if (currEntry.text != "") {
-            errorLabel.text = ""
-        } else {
-            errorLabel.text = "Please enter text"
         }
     }
     

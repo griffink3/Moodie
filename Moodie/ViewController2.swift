@@ -42,6 +42,15 @@ class ViewController2: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func userExists(name: String) -> Bool {
+        for user in appDelegate.userArray {
+            if (user.name == name) {
+                return true
+            }
+        }
+        return false
+    }
+    
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -55,16 +64,15 @@ class ViewController2: UIViewController, UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func newUser(_ sender: UIButton) {
-        print(currName)
-        if (currName == "" || appDelegate.users[currName] != nil) {
+        if (currName == "" || userExists(name: currName)) {
             // Throw error
             errorLabel.text = "Invalid name or name already taken!"
         } else {
             // Create a new user
-            appDelegate.users[currName] = User(name: currName)
+            appDelegate.currUser = User(name: currName)
+            appDelegate.userArray.append(appDelegate.currUser)
+            appDelegate.updateUserArray()
             shouldSegue = true
-            appDelegate.currUser = appDelegate.users[currName]!
-            print(currName)
         }
         currName = ""
     }
