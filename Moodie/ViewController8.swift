@@ -219,6 +219,18 @@ class ViewController8: UIViewController {
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
+        let d = Description()
+        barChart.animate(yAxisDuration: 1)
+        if (trackControl.selectedSegmentIndex == 0) {
+            d.text = "People"
+        } else if (trackControl.selectedSegmentIndex == 1) {
+            d.text = "Places"
+        } else if (trackControl.selectedSegmentIndex == 2) {
+            d.text = "Organizations"
+        } else if (trackControl.selectedSegmentIndex == 3) {
+            d.text = "Actions"
+        }
+        
         var dataEntries: [BarChartDataEntry] = []
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry()
@@ -241,16 +253,25 @@ class ViewController8: UIViewController {
         
         let barChartData = BarChartData(dataSet: barChartDataSet)
         barChart.data = barChartData
+
         barChart.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         barChart.xAxis.granularity = 1
-        if (trackControl.selectedSegmentIndex == 0) {
-            barChart.noDataText = "No people were found in your entries"
-        } else if (trackControl.selectedSegmentIndex == 1) {
-            barChart.noDataText = "No places were found in your entries"
-        } else if (trackControl.selectedSegmentIndex == 2) {
-            barChart.noDataText = "No organizations were found in your entries"
-        } else if (trackControl.selectedSegmentIndex == 3) {
-            barChart.noDataText = "No actions were found in your entries"
+        barChart.chartDescription = d
+        
+        if (dataPoints.isEmpty && values.isEmpty) {
+            barChart.clear()
+            barChart.noDataTextColor = UIColor.red
+            barChart.noDataFont = UIFont(name: "Futura-CondensedExtraBold", size: 18)
+            barChart.noDataTextAlignment = .center
+            if (trackControl.selectedSegmentIndex == 0) {
+                barChart.noDataText = "No people were found in your entries"
+            } else if (trackControl.selectedSegmentIndex == 1) {
+                barChart.noDataText = "No places were found in your entries"
+            } else if (trackControl.selectedSegmentIndex == 2) {
+                barChart.noDataText = "No organizations were found in your entries"
+            } else if (trackControl.selectedSegmentIndex == 3) {
+                barChart.noDataText = "No actions were found in your entries"
+            }
         }
     }
     
