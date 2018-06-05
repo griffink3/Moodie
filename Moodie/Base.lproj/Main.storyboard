@@ -286,6 +286,9 @@
                                 <rect key="frame" x="132" y="319" width="110" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="track_button"/>
+                                <connections>
+                                    <segue destination="ElX-lt-eXK" kind="show" id="RBI-6W-AiO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJo-Ox-JeA">
                                 <rect key="frame" x="137" y="562" width="100" height="55"/>
@@ -322,14 +325,14 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0zI-CA-UeW">
                                 <rect key="frame" x="41" y="154" width="293" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="Happy"/>
                                     <segment title="Sad"/>
                                     <segment title="Angry"/>
                                     <segment title="Afraid"/>
                                 </segments>
-                                <color key="tintColor" red="0.1407048471" green="0.4691615844" blue="0.80582091970000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.67961025180000001" green="0.51618761010000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="f5R-aq-m9c"/>
                                 </connections>
@@ -546,14 +549,14 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0vw-II-Mor">
                                 <rect key="frame" x="41" y="155" width="293" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="Happy"/>
                                     <segment title="Sad"/>
                                     <segment title="Angry"/>
                                     <segment title="Afraid"/>
                                 </segments>
-                                <color key="tintColor" red="0.1407048471" green="0.4691615844" blue="0.80582091970000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.67961025180000001" green="0.51618761010000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="changeEmotion:" destination="ttq-Ai-n9O" eventType="valueChanged" id="3qW-79-qSS"/>
                                     <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="wDh-BR-xhW"/>
@@ -649,6 +652,102 @@
             </objects>
             <point key="canvasLocation" x="3108" y="570.76461769115451"/>
         </scene>
+        <!--TrackPage-->
+        <scene sceneID="dbz-Qy-kHO">
+            <objects>
+                <viewController title="TrackPage" id="ElX-lt-eXK" customClass="ViewController8" customModule="Moodie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hce-4C-cRQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="emotionControl" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e1Z-z3-ePe">
+                                <rect key="frame" x="41" y="547" width="293" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Happy"/>
+                                    <segment title="Sad"/>
+                                    <segment title="Angry"/>
+                                    <segment title="Afraid"/>
+                                </segments>
+                                <color key="tintColor" red="0.67961025180000001" green="0.51618761010000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="Iyt-fA-lLs"/>
+                                    <action selector="changeEmotion:" destination="ElX-lt-eXK" eventType="valueChanged" id="glf-ua-GHK"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwZ-5d-U5n">
+                                <rect key="frame" x="101" y="20" width="173" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Track Mood">
+                                        <attributes>
+                                            <font key="NSFont" size="33" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KHQ-pe-JVy" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="123" width="343" height="379"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtC-cm-UdM">
+                                <rect key="frame" x="147" y="594" width="80" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="back_button"/>
+                                <connections>
+                                    <segue destination="zMj-2G-5KM" kind="show" id="aay-fk-Tk0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhC-F3-JoQ">
+                                <rect key="frame" x="27" y="501" width="321" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="1" green="0.081321229719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="trackControl" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dqI-Y3-Gda">
+                                <rect key="frame" x="10" y="76" width="355" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Person"/>
+                                    <segment title="Place"/>
+                                    <segment title="Organization"/>
+                                    <segment title="Activity"/>
+                                </segments>
+                                <color key="tintColor" red="0.80582091970000003" green="0.22698812609999999" blue="0.62736937230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="changeEmotion:" destination="ujB-X9-4P3" eventType="valueChanged" id="eKR-lQ-Rbd"/>
+                                    <action selector="changeTrack:" destination="ElX-lt-eXK" eventType="valueChanged" id="2YL-ad-KKL"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.5568627451" green="1" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="R7n-qf-jmE"/>
+                    </view>
+                    <connections>
+                        <outlet property="barChart" destination="KHQ-pe-JVy" id="AeW-bP-RVt"/>
+                        <outlet property="emotionControl" destination="e1Z-z3-ePe" id="uxG-Sw-3bH"/>
+                        <outlet property="totalLabel" destination="vhC-F3-JoQ" id="4Fn-bM-rx7"/>
+                        <outlet property="trackControl" destination="dqI-Y3-Gda" id="1Jj-lL-RnH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="alP-E5-dfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="1289.5052473763119"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back_button" width="222" height="130"/>
@@ -663,7 +762,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Cvo-cE-Isq"/>
-        <segue reference="I8n-gg-hV6"/>
+        <segue reference="aay-fk-Tk0"/>
         <segue reference="zpf-j7-7bJ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -48,7 +48,19 @@ class ViewController5: UIViewController, UITextFieldDelegate {
     override func shouldPerformSegue(withIdentifier: String, sender: Any!) -> Bool {
         if withIdentifier == "newEntry" {
             if (currText == "") {
+                errorLabel.text = "Please enter text"
                 return false
+            } else {
+                errorLabel.text = ""
+                let date: Date = Date()
+                let title: String = dateToString(date: date)
+                if (!appDelegate.currUser.titleExist(title: title)) {
+                    appDelegate.currUser.addEntry(entry: Entry(text: currText, title: dateToString(date: date), happiness: Int(emotionValues[0]), sadness: Int(emotionValues[1]), anger: Int(emotionValues[2]), fear: Int(emotionValues[3]), user: appDelegate.currUser.name))
+                    errorLabel.text = ""
+                } else {
+                    errorLabel.text = "Title already exists"
+                    return false
+                }
             }
         }
         return true
@@ -82,7 +94,7 @@ class ViewController5: UIViewController, UITextFieldDelegate {
         let d = Description()
         d.text = "Emotional Weights"
         pieChart.chartDescription = d
-        pieChart.transparentCircleColor = UIColor.clear
+        pieChart.holeColor = UIColor(red: 0.5765, green: 0.5765, blue: 0.5765, alpha: 1.0)
     }
     
     func dateToString(date: Date) -> String {
@@ -160,18 +172,6 @@ class ViewController5: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func newEntry(_ sender: UIButton) {
-        if (currText != "") {
-            let date: Date = Date()
-            let title: String = dateToString(date: date)
-            if (!appDelegate.currUser.titleExist(title: title)) {
-                appDelegate.currUser.addEntry(entry: Entry(text: currText, title: dateToString(date: date), happiness: Int(emotionValues[0]), sadness: Int(emotionValues[1]), anger: Int(emotionValues[2]), fear: Int(emotionValues[3]), user: appDelegate.currUser.name))
-                errorLabel.text = ""
-            } else {
-                errorLabel.text = "Title already exists"
-            }
-        } else {
-            errorLabel.text = "Please enter text"
-        }
     }
     
 }

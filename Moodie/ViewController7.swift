@@ -80,7 +80,7 @@ class ViewController7: UIViewController, UITextFieldDelegate {
         let d = Description()
         d.text = "Emotional Weights"
         pieChart.chartDescription = d
-        pieChart.transparentCircleColor = UIColor.clear
+        pieChart.holeColor = UIColor(red: 0.5765, green: 0.5765, blue: 0.5765, alpha: 1.0)
     }
     
     // MARK: UITextFieldDelegate
